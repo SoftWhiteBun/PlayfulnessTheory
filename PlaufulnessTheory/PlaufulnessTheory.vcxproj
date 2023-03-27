@@ -140,6 +140,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="PlaufulnessTheory.cpp" />
+    <ClCompile Include="UserInteraction.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="UserInteraction.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
