@@ -4,6 +4,10 @@
 
 using namespace std;
 
-void MainMenu(bool& flgInteract, vector<vector<float>>& game);
-void CInput(vector<vector<float>>& game);
-bool FInput(vector<vector<float>>& game);
+//void MainMenu(bool& flgBimatrix, bool& flgInteract, vector<vector<float>>& game);
+bool CInput(bool& flgBimatrix, vector<vector<float>>& game);
+bool FInput(bool& flgBimatrix, vector<vector<float>>& game);
+bool MatrixType(bool& flgBimatrix);
+void ReadMatr(vector<vector<float>>& game, int n, int m, istream& file = cin);
+void ReadBimatr(vector<vector<float>>& game, int n, int m, istream& file = cin);
+bool CheckFormat(int n, int m);

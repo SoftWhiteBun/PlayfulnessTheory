@@ -1,54 +1,36 @@
 #include "UserInteraction.h"
 
-void MainMenu(bool &flgInteract, vector<vector<float>> &game) {
-	cout << "Для выбора действия введите: " << endl;
-	cout << "c - ввод и вывод данных через консоль;" << endl;
-	cout << "f - ввод и вывод данных через файл" << endl; //std::cout << "" << std::endl;
-
-	string UInp;
-	cin >> UInp;
-	if (UInp == "c") {
-		flgInteract = true;
-		CInput(game);
-		//std::cout << "Введите действие: " << std::endl;
-		MainMenu(flgInteract, game);
+bool MatrixType(bool& flgBimatrix) {
+	string flg;
+	cout << "Введите тип матрицы (b - биматрица; m - простая матрица): " << endl;
+	cin >> flg;
+	if (flg == "b") flgBimatrix = true;
+	else if (flg == "m") flgBimatrix = false;
+	else {
+		cout << "Некорректный тип матрицы" << endl;
+		return false;
 	}
-	if (UInp == "f") {
-		flgInteract = false;
-		FInput(game);
-		MainMenu(flgInteract, game);
-	}
+	return true;
 }
 
-void CInput(vector<vector<float>> &game) {
+bool CInput(bool& flgBimatrix, vector<vector<float>>& game) {
 	int n = 0; //строки
 	int m = 0; //столбцы
-	//vector<vector<float>> matrix;
 
 	cout << "Введите размер матрицы (формат ввода: строки столбцы): ";
 	cin >> n >> m;
-	if (n == 0 || m == 0) {
-		cout << "Неверный формат матрицы" << endl;
-		CInput(game);
-	}
+	if (!CheckFormat) return false;
 
 	cout << "Введите матрицу:" << endl;
-	game.clear();
-	for (int i = 0; i < n; ++i) {
-		vector<float> jvec;
-		for (int j = 0; j < m; ++j) {
-			float elem;
-			cin >> elem;
-			jvec.push_back(elem);
-		}
-		game.push_back(jvec);
-	}
+	ReadMatr(game, n, m);
+	return true;
 }
 
-bool FInput(vector<vector<float>> &game) {
+bool FInput(bool& flgBimatrix, vector<vector<float>>& game) {
 	string fileName;
 	int n = 0;
 	int m = 0;
+
 	cout << "Введите имя файла:" << endl;
 	cin >> fileName;
 
@@ -59,27 +41,44 @@ bool FInput(vector<vector<float>> &game) {
 	}
 	while (file) {
 		file >> n >> m;
+		if (!CheckFormat) return false;
 
-		if (n == 0 || m == 0) {
-			cout << "Неверный формат матрицы" << endl;
-			//FInput(game);
-			return false;
-		}
-
-		game.clear();
-		for (int i = 0; i < n; ++i) {
-			vector<float> jvec;
-			for (int j = 0; j < m; ++j) {
-				float elem;
-				file >> elem;
-				jvec.push_back(elem);
-			}
-			game.push_back(jvec);
-		}
+        ReadMatr(game, n, m, file);
 	}
-	if (game.size() != n || game[n].size() != m) {
+
+	if (game.size() != n || game[n-1].size() != m) {
 		cout << "Введены неверные размеры матрицы" << endl;
 		return false;
 	}
 	return true;
 }
+
+void ReadMatr(vector<vector<float>>& game, int n, int m, istream& file) {
+	game.clear();
+	for (int i = 0; i < n; ++i) {
+		vector<float> jvec;
+		for (int j = 0; j < m; ++j) {
+			float elem;
+			file >> elem;
+			jvec.push_back(elem);
+		}
+		game.push_back(jvec);
+	}
+}
+
+bool CheckFormat(int n, int m) {
+	if (n == 0 || m == 0) {
+		cout << "Неверный формат матрицы" << endl;
+		return false;
+	}
+	return true;
+}
+
+void ReadBimatr(vector<vector<float>>& game, int n, int m, istream& file) {
+
+}
+
+
+
+
+
