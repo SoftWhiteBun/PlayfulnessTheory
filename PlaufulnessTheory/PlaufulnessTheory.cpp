@@ -1,6 +1,9 @@
 ﻿#include <iostream>
-#include "UserInteraction.h"
 #include <locale.h>
+
+#include "UserInteraction.h"
+#include "MaxMin.h"
+#include "Output.h"
 
 int main()
 {
@@ -16,9 +19,15 @@ int main()
 ;
 		if (!flgBimatrix) {
 			cout << "Для выбора действия введите: " << endl;
-			cout << "c - ввод и вывод данных через консоль;" << endl;
-			cout << "f - ввод и вывод данных через файл" << endl;
+			cout << "c - ввод матрицы через консоль" << endl;
+			cout << "f - ввод матрицы через файл" << endl;
+			cout << "m - получить максимин и минимакс" << endl;
+			cout << "d - удалить строго доминируемые ходы" << endl;
+			cout << "cc - вывод матрицы в консоль" << endl;
+			cout << "ff - вывод матрицы в консоль" << endl;
 			// другие действия с матричной моделью
+			cout << "е - выход" << endl;
+			cout << endl;
 
 			cin >> UInp;
 			if (UInp == "c") {
@@ -33,6 +42,28 @@ int main()
 				flgInteract = false;
 				while (!FInput(flgBimatrix, Mgame));
 				continue;
+			}
+			if (UInp == "m") {
+				pair<int, int> maxmin = MaxMin(Mgame);
+				pair<int, int> minmax = MinMax(Mgame);
+				cout << endl;
+				cout << "Максимин:" << endl;
+				cout << "Индекс: [ " << maxmin.first << " , " << maxmin.second << " ]" << endl;
+				cout << "Значение: " << Mgame[maxmin.first][maxmin.second] << endl << endl;
+
+				cout << "Минимакс:" << endl;
+				cout << "Индекс: [ " << minmax.first << " , " << minmax.second << " ]" << endl;
+				cout << "Значение: " << Mgame[minmax.first][minmax.second] << endl << endl;
+			}
+			if (UInp == "cc") {
+				COutput(Mgame);
+			}
+			if (UInp == "ff") {
+				FOutput(Mgame);
+			}
+
+			if (UInp == "e") {
+				ExitApp = true;
 			}
 
 		}

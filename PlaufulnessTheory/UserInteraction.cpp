@@ -1,18 +1,5 @@
 #include "UserInteraction.h"
 
-bool MatrixType(bool& flgBimatrix) {
-	string flg;
-	cout << "Введите тип матрицы (b - биматрица; m - простая матрица): " << endl;
-	cin >> flg;
-	if (flg == "b") flgBimatrix = true;
-	else if (flg == "m") flgBimatrix = false;
-	else {
-		cout << "Некорректный тип матрицы" << endl;
-		return false;
-	}
-	return true;
-}
-
 bool CInput(bool& flgBimatrix, vector<vector<float>>& game) {
 	int n = 0; //строки
 	int m = 0; //столбцы
@@ -39,12 +26,12 @@ bool FInput(bool& flgBimatrix, vector<vector<float>>& game) {
 		cout << "Неудалось открыть файл для чтения" << endl;
 		return false;
 	}
-	while (file) {
+	do {
 		file >> n >> m;
 		if (!CheckFormat) return false;
 
         ReadMatr(game, n, m, file);
-	}
+	} while (!file.eof());
 
 	if (game.size() != n || game[n-1].size() != m) {
 		cout << "Введены неверные размеры матрицы" << endl;
@@ -74,8 +61,19 @@ bool CheckFormat(int n, int m) {
 	return true;
 }
 
-void ReadBimatr(vector<vector<float>>& game, int n, int m, istream& file) {
+//-----------------------------------------------------
 
+bool MatrixType(bool& flgBimatrix) {
+	string flg;
+	cout << "Введите тип матрицы (b - биматрица; m - простая матрица): " << endl;
+	cin >> flg;
+	if (flg == "b") flgBimatrix = true;
+	else if (flg == "m") flgBimatrix = false;
+	else {
+		cout << "Некорректный тип матрицы" << endl;
+		return false;
+	}
+	return true;
 }
 
 
