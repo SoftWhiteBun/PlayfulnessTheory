@@ -4,6 +4,7 @@
 #include "UserInteraction.h"
 #include "MaxMin.h"
 #include "Output.h"
+//#include "Log.h"
 
 int main()
 {
@@ -28,7 +29,6 @@ int main()
 			// другие действия с матричной моделью
 			cout << "е - выход" << endl;
 			cout << endl;
-
 			cin >> UInp;
 			if (UInp == "c") {
 				flgInteract = true;;
@@ -56,6 +56,8 @@ int main()
 				cout << "Значение: " << Mgame[minmax.first][minmax.second] << endl << endl;
 			}
 			if (UInp == "cc") {
+				auto iter = Mgame.cbegin(); // указатель на первый элемент
+				Mgame.erase(iter + 1);
 				COutput(Mgame);
 			}
 			if (UInp == "ff") {
@@ -65,6 +67,7 @@ int main()
 			if (UInp == "e") {
 				ExitApp = true;
 			}
+
 
 		}
 		//---------------------------------------------------------------------
