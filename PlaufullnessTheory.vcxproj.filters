@@ -27,9 +27,6 @@
     <ClCompile Include="Output.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="Source.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
     <ClCompile Include="StrictlyDominated.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
