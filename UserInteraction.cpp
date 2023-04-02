@@ -6,7 +6,7 @@ bool CInput(bool& flgBimatrix, vector<vector<float>>& game) {
 
 	cout << "¬ведите размер матрицы (формат ввода: строки столбцы): ";
 	cin >> n >> m;
-	if (!CheckFormat) return false;
+	if (!CheckFormat(n, m)) return false;
 
 	cout << "¬ведите матрицу:" << endl;
 	ReadMatr(game, n, m);
@@ -28,7 +28,7 @@ bool FInput(bool& flgBimatrix, vector<vector<float>>& game) {
 	}
 	do {
 		file >> n >> m;
-		if (!CheckFormat) return false;
+		if (!CheckFormat(n, m)) return false;
 
 		ReadMatr(game, n, m, file);
 	} while (!file.eof());

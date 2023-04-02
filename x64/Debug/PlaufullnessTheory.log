@@ -29,7 +29,6 @@ C:\Users\sone4\OneDrive\Документы\8_sem\Теория_игривости
 C:\Users\sone4\OneDrive\Документы\8_sem\Теория_игривости\PlaufulnessTheory\Output.cpp(17,21): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
 C:\Users\sone4\OneDrive\Документы\8_sem\Теория_игривости\PlaufulnessTheory\Output.cpp(18,28): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
   PlaufullnessTheory.cpp
-  Source.cpp
   StrictlyDominated.cpp
 C:\Users\sone4\OneDrive\Документы\8_sem\Теория_игривости\PlaufulnessTheory\StrictlyDominated.cpp(5,21): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
 C:\Users\sone4\OneDrive\Документы\8_sem\Теория_игривости\PlaufulnessTheory\StrictlyDominated.cpp(6,28): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
@@ -40,7 +39,5 @@ C:\Users\sone4\OneDrive\Документы\8_sem\Теория_игривости
 C:\Users\sone4\OneDrive\Документы\8_sem\Теория_игривости\PlaufulnessTheory\StrictlyDominated.cpp(70,23): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
 C:\Users\sone4\OneDrive\Документы\8_sem\Теория_игривости\PlaufulnessTheory\StrictlyDominated.cpp(75,23): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
   UserInteraction.cpp
-C:\Users\sone4\OneDrive\Документы\8_sem\Теория_игривости\PlaufulnessTheory\UserInteraction.cpp(9,6): warning C4551: в вызове функции отсутствует список аргументов
-C:\Users\sone4\OneDrive\Документы\8_sem\Теория_игривости\PlaufulnessTheory\UserInteraction.cpp(31,7): warning C4551: в вызове функции отсутствует список аргументов
   Создание кода...
   PlaufullnessTheory.vcxproj -> C:\Users\sone4\OneDrive\Документы\8_sem\Теория_игривости\PlaufulnessTheory\x64\Debug\PlaufullnessTheory.exe
