@@ -2,7 +2,13 @@
 
 void COutput(vector<vector<float>>& game, ostream& file) {
 	int n = game.size();
-	int m = game[n - 1].size();
+	int m;
+	if (n == 0) {
+		cout << "Матрица не введена" << endl;
+		return;
+	}
+
+	m = game[n - 1].size();
 
 	file << endl;
 	for (int i = 0; i < n; ++i) {
@@ -15,7 +21,13 @@ void COutput(vector<vector<float>>& game, ostream& file) {
 
 bool FOutput(vector<vector<float>>& game) {
 	int n = game.size();
-	int m = game[n - 1].size();
+	int m;
+	if (n == 0) {
+		cout << "Матрица не введена" << endl;
+		return false;
+	}
+
+	m = game[n - 1].size();
 	string filename;
 
 	cout << "Введите имя файла:" << endl;
@@ -26,8 +38,14 @@ bool FOutput(vector<vector<float>>& game) {
 		cout << "Неудалось открыть файл для записи" << endl;
 		return false;
 	}
+	//if (game.empty()) {
+	//	cout << "Матрица не введена" << endl;
+	//	return false;
+	//}
 
 	COutput(game, file);
 
 	return true;
 }
+
+
