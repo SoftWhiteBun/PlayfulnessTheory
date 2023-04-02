@@ -1,6 +1,6 @@
 ﻿// PlaufullnessTheory.cpp : Этот файл содержит функцию "main". Здесь начинается и заканчивается выполнение программы.
 //
-
+#include "cassert"
 #include <iostream>
 #include <locale.h>
 #include "Output.h"
@@ -10,6 +10,19 @@
 
 using namespace std;
 
+void Alltests()
+{
+	vector<vector<float>> myvect0 = { {0, 1}, {1, 0} };
+	vector<vector<float>> myvect1 = { {0, 1}, {1, 0} };
+	assert(StrictlyDominated1(myvect0) == myvect1);
+
+	myvect0 = { {0, 1, 2}, {2, 5, 4} };
+	myvect1 = { {2, 5, 4}, {} };
+	assert(StrictlyDominated1(myvect0) == myvect1);
+
+	cout << "Тесты прошли успешно, всё заебись!";
+}
+
 int main()
 {
 	setlocale(LC_ALL, "Russian");
@@ -17,6 +30,8 @@ int main()
 	vector<vector<pair<float, float>>> Bgame;
 	vector<vector<float>> Mgame;
 	bool ExitApp = false;
+
+	Alltests();
 
 	while (!MatrixType(flgBimatrix));
 	while (!ExitApp) {
