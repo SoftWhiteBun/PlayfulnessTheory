@@ -16,6 +16,7 @@ int main()
 	bool flgInteract, flgBimatrix;
 	vector<vector<pair<float, float>>> Bgame;
 	vector<vector<float>> Mgame;
+	Bgame.clear(); Mgame.clear();
 	bool ExitApp = false;
 
 	while (!MatrixType(flgBimatrix));

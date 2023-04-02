@@ -17,7 +17,7 @@ bool CInput(bool& flgBimatrix, vector<vector<float>>& game) {
 	if (!CheckFormat(n, m)) return false;
 
 	cout << "Введите матрицу:" << endl;
-	ReadMatr(game, n, m);
+	if (!ReadMatr(game, n, m)) return false;
 	return true;
 }
 
@@ -46,7 +46,7 @@ bool FInput(bool& flgBimatrix, vector<vector<float>>& game) {
 		}
 		if (!CheckFormat(n, m)) return false;
 
-		ReadMatr(game, n, m, file);
+		if (!ReadMatr(game, n, m, file)) return false;
 	} while (!file.eof());
 
 	if (game.size() != n || game[n - 1].size() != m) {
@@ -56,21 +56,29 @@ bool FInput(bool& flgBimatrix, vector<vector<float>>& game) {
 	return true;
 }
 
-void ReadMatr(vector<vector<float>>& game, int n, int m, istream& file) {
+bool ReadMatr(vector<vector<float>>& game, int n, int m, istream& file) {
 	game.clear();
 	int i = 0;
-	while (!file.eof() && i < n) {
-		vector<float> jvec;
-		int j = 0;
-		while (!file.eof() && j < m) {
-			float elem;
-			file >> elem;
-			jvec.push_back(elem);
-			++j;
+	try {
+		while (!file.eof() && i < n) {
+			vector<float> jvec;
+			int j = 0;
+			while (!file.eof() && j < m) {
+				string str;
+				file >> str;
+				float elem = stoi(str);
+				jvec.push_back(elem);
+				++j;
+			}
+			game.push_back(jvec);
+			++i;
 		}
-		game.push_back(jvec);
-		++i;
 	}
+	catch (std::invalid_argument e) {
+		cout << "Неверный формат - введен строковый символ или строка" << endl;
+		return false;
+	}
+	return true;
 }
 
 bool CheckFormat(int n, int m) {
