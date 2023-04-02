@@ -1,6 +1,6 @@
 #include "Output.h"
 
-void COutput(vector<vector<float>> game, ostream& file) {
+void COutput(vector<vector<float>>& game, ostream& file) {
 	int n = game.size();
 	int m = game[n - 1].size();
 
@@ -13,7 +13,7 @@ void COutput(vector<vector<float>> game, ostream& file) {
 	}
 }
 
-bool FOutput(vector<vector<float>> game) {
+bool FOutput(vector<vector<float>>& game) {
 	int n = game.size();
 	int m = game[n - 1].size();
 	string filename;

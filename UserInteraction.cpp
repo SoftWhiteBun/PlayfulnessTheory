@@ -3,9 +3,17 @@
 bool CInput(bool& flgBimatrix, vector<vector<float>>& game) {
 	int n = 0; //строки
 	int m = 0; //столбцы
+	string str1, str2;
 
 	cout << "Введите размер матрицы (формат ввода: строки столбцы): ";
-	cin >> n >> m;
+	cin >> str1 >> str2;
+	try {
+		n = std::stoi(str1);
+		m = std::stoi(str2);
+	}
+	catch (std::invalid_argument e) {
+		cout << "Неверный формат - введен строковый символ или строка" << endl;
+	}
 	if (!CheckFormat(n, m)) return false;
 
 	cout << "Введите матрицу:" << endl;
@@ -17,6 +25,7 @@ bool FInput(bool& flgBimatrix, vector<vector<float>>& game) {
 	string fileName;
 	int n = 0;
 	int m = 0;
+	string str1, str2;
 
 	cout << "Введите имя файла:" << endl;
 	cin >> fileName;
@@ -27,7 +36,14 @@ bool FInput(bool& flgBimatrix, vector<vector<float>>& game) {
 		return false;
 	}
 	do {
-		file >> n >> m;
+		file >> str1 >> str2;
+		try {
+			n = std::stoi(str1);
+			m = std::stoi(str2);
+		}
+		catch (std::invalid_argument e) {
+			cout << "Неверный формат - введен строковый символ или строка" << endl;
+		}
 		if (!CheckFormat(n, m)) return false;
 
 		ReadMatr(game, n, m, file);
@@ -42,14 +58,18 @@ bool FInput(bool& flgBimatrix, vector<vector<float>>& game) {
 
 void ReadMatr(vector<vector<float>>& game, int n, int m, istream& file) {
 	game.clear();
-	for (int i = 0; i < n; ++i) {
+	int i = 0;
+	while (!file.eof() && i < n) {
 		vector<float> jvec;
-		for (int j = 0; j < m; ++j) {
+		int j = 0;
+		while (!file.eof() && j < m) {
 			float elem;
 			file >> elem;
 			jvec.push_back(elem);
+			++j;
 		}
 		game.push_back(jvec);
+		++i;
 	}
 }
 
@@ -65,10 +85,14 @@ bool CheckFormat(int n, int m) {
 
 bool MatrixType(bool& flgBimatrix) {
 	string flg;
-	cout << "Введите тип матрицы (b - биматрица; m - простая матрица): " << endl;
+	cout << "Введите тип матрицы" << endl;
+	cout << "b - биматрица" << endl;
+	cout << "m - простая матрица" << endl;
+	cout << "e - выход" << endl;
 	cin >> flg;
 	if (flg == "b") flgBimatrix = true;
 	else if (flg == "m") flgBimatrix = false;
+	else if (flg == "e") exit(0);
 	else {
 		cout << "Некорректный тип матрицы" << endl;
 		return false;

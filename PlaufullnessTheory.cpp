@@ -23,6 +23,7 @@ int main()
 		string UInp;
 		;
 		if (!flgBimatrix) {
+			cout << endl;
 			cout << "Для выбора действия введите: " << endl;
 			cout << "c - ввод матрицы через консоль" << endl;
 			cout << "f - ввод матрицы через файл" << endl;
@@ -37,15 +38,16 @@ int main()
 			cin >> UInp;
 			if (UInp == "c") {
 				flgInteract = true;;
-				while (!CInput(flgBimatrix, Mgame));
-
+				//while (!CInput(flgBimatrix, Mgame));
+				CInput(flgBimatrix, Mgame);
 				//std::cout << "Введите действие: " << std::endl;
 				//MainMenu(flgBimatrix, flgInteract, game);
 				continue;
 			}
 			if (UInp == "f") {
 				flgInteract = false;
-				while (!FInput(flgBimatrix, Mgame));
+				//while (!FInput(flgBimatrix, Mgame));
+				FInput(flgBimatrix, Mgame);
 				continue;
 			}
 			if (UInp == "m") {
@@ -61,8 +63,8 @@ int main()
 				cout << "Значение: " << Mgame[minmax.first][minmax.second] << endl << endl;
 			}
 			if (UInp == "d") {
-				//vector<vector<float>> Strictly = StrictlyDominated1(Mgame);
-				COutput(StrictlyDominated1(Mgame));
+				vector<vector<float>> Strictly = StrictlyDominated1(Mgame);
+				COutput(Strictly);
 			}
 
 
