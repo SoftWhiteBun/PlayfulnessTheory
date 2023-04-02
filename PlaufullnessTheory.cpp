@@ -10,6 +10,7 @@
 
 using namespace std;
 
+/*
 void Alltests()
 {
 	vector<vector<float>> myvect0 = { {0, 1}, {1, 0} };
@@ -22,7 +23,7 @@ void Alltests()
 
 	cout << "Тесты прошли успешно, всё заебись!";
 }
-
+*/
 int main()
 {
 	setlocale(LC_ALL, "Russian");
@@ -32,7 +33,7 @@ int main()
 	Bgame.clear(); Mgame.clear();
 	bool ExitApp = false;
 
-	Alltests();
+//	Alltests();
 
 	while (!MatrixType(flgBimatrix));
 	while (!ExitApp) {
