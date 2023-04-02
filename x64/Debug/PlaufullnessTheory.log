@@ -1,5 +1,2 @@
 ﻿  PlaufullnessTheory.cpp
-  UserInteraction.cpp
-C:\Users\sone4\OneDrive\Документы\8_sem\Теория_игривости\PlaufulnessTheory\UserInteraction.cpp(69,16): warning C4244: инициализация: преобразование "int" в "float", возможна потеря данных
-  Создание кода...
   PlaufullnessTheory.vcxproj -> C:\Users\sone4\OneDrive\Документы\8_sem\Теория_игривости\PlaufulnessTheory\x64\Debug\PlaufullnessTheory.exe

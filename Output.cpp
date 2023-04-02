@@ -38,10 +38,6 @@ bool FOutput(vector<vector<float>>& game) {
 		cout << "Неудалось открыть файл для записи" << endl;
 		return false;
 	}
-	//if (game.empty()) {
-	//	cout << "Матрица не введена" << endl;
-	//	return false;
-	//}
 
 	COutput(game, file);
 
