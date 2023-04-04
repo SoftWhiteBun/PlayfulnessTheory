@@ -34,14 +34,23 @@ vector<vector<float>>StrictlyDominated1(vector<vector<float>>& game) {
 		}
 
 	}
-	int sizeIndex = index.size();
-	if (sizeIndex > 0) {						
+	//int sizeIndex = index.size();
+	//if (sizeIndex > 0) {						
+	//	sort(index.begin(), index.end());
+	//	for (int i = sizeIndex-1; i >= 0; i--) {   //вот тут надо придумать как удалять элементы с индексами, которые хрянятся в векторе index
+	//		advance(iter, index[i]);	//меняю позицию итератора, но как-то через пизду
+	//		dop.erase(iter);		//тут крашится
+	//	}
+	//}
+
+	if (index.size() > 0) {
 		sort(index.begin(), index.end());
-		for (int i = sizeIndex-1; i >= 0; i--) {   //вот тут надо придумать как удалять элементы с индексами, которые хрянятся в векторе index
-			advance(iter, index[i]);	//меняю позицию итератора, но как-то через пизду
-			dop.erase(iter);		//тут крашится
+		for (int i = 0; i < index.size(); ++i) {
+			iter = dop.cbegin() + index[i] - i;
+			dop.erase(iter);
 		}
 	}
+
 
 	if (dop.size() == game.size())
 		cout << "Строго доминируемых строк не обнаружено";
@@ -92,3 +101,5 @@ vector<vector<float>> StrictlyDominated2(vector<vector<float>>& game) {
 	}
 	return dop;
 }
+
+

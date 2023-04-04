@@ -5,8 +5,16 @@
 
 using namespace std;
 
+enum HelpFlg {
+	HMaxMin = 0,
+	HSDomin,
+	HWDomin
+	//HNLO
+};
+
 bool CInput(bool& flgBimatrix, vector<vector<float>>& game);
 bool FInput(bool& flgBimatrix, vector<vector<float>>& game);
-bool MatrixType(bool& flgBimatrix);
+//bool MatrixType(bool& flgBimatrix);
 bool ReadMatr(vector<vector<float>>& game, int n, int m, istream& file = cin);
 bool CheckFormat(int n, int m);
+void Help(HelpFlg flg);
