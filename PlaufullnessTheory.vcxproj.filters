@@ -30,6 +30,9 @@
     <ClCompile Include="StrictlyDominated.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="WeaklyDominated.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Output.h">
@@ -42,6 +45,9 @@
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="StrictlyDominated.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="WeaklyDominated.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>

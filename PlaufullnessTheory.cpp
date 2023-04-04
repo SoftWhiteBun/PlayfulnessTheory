@@ -43,9 +43,10 @@ int main()
 			cout << "c - ввод матрицы через консоль" << endl;
 			cout << "f - ввод матрицы через файл" << endl;
 			cout << "m - получить максимин и минимакс" << endl;
-			cout << "d - удалить строго доминируемые ходы" << endl;
+			cout << "d - удалить строго доминируемые стратегии" << endl;
+			cout << "w - удалить слабо доминируемые стратегии" << endl;
 			cout << "cc - вывод матрицы в консоль" << endl;
-			cout << "ff - вывод матрицы в консоль" << endl;
+			cout << "ff - вывод матрицы в файл" << endl;
 			// другие действия с матричной моделью
 			cout << "е - выход" << endl;
 			cout << endl;
@@ -84,10 +85,20 @@ int main()
 					cout << "Матрица не введена" << endl;
 					continue;
 				}
+				vector<vector<float>> Strictly = StrictlyDominated1(Mgame);	//для первого игрока
+				vector<vector<float>> Strictly2 = StrictlyDominated2(Mgame);	//для второго игрока
+				COutput(Strictly);		//ТУТ ДОБАВИТЬ ВЫБОР ДЛЯ КАКОГО ИГРОКА УДАЛЯТЬ СТРАТЕГИИ, АНАЛОГИЧНО СДЕЛАТЬ ДЛЯ СЛАБО ДОМИНИРУМЫХ
+
+			}
+
+			if (UInp == "w") {
+				if (Mgame.size() == 0) {
+					cout << "Матрица не введена" << endl;
+					continue;
+				}
 				vector<vector<float>> Strictly = StrictlyDominated1(Mgame);
 				COutput(Strictly);
 			}
-
 
 
 			if (UInp == "cc") {

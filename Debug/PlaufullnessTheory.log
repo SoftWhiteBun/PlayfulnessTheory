@@ -1,22 +1,2 @@
-﻿  MaxMin.cpp
-C:\Users\Liza\Desktop\учеба\весенний сем\теория игр\проект\PlaufullnessTheory\MaxMin.cpp(14,24): warning C4244: =: преобразование "_Ty" в "int", возможна потеря данных
-          with
-          [
-              _Ty=float
-          ]
-C:\Users\Liza\Desktop\учеба\весенний сем\теория игр\проект\PlaufullnessTheory\MaxMin.cpp(18,32): warning C4244: =: преобразование "_Ty" в "int", возможна потеря данных
-          with
-          [
-              _Ty=float
-          ]
-C:\Users\Liza\Desktop\учеба\весенний сем\теория игр\проект\PlaufullnessTheory\MaxMin.cpp(40,24): warning C4244: =: преобразование "_Ty" в "int", возможна потеря данных
-          with
-          [
-              _Ty=float
-          ]
-C:\Users\Liza\Desktop\учеба\весенний сем\теория игр\проект\PlaufullnessTheory\MaxMin.cpp(44,32): warning C4244: =: преобразование "_Ty" в "int", возможна потеря данных
-          with
-          [
-              _Ty=float
-          ]
+﻿  StrictlyDominated.cpp
   PlaufullnessTheory.vcxproj -> C:\Users\Liza\Desktop\учеба\весенний сем\теория игр\проект\PlaufullnessTheory\Debug\PlaufullnessTheory.exe

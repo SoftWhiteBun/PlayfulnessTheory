@@ -144,12 +144,14 @@
     <ClCompile Include="PlaufullnessTheory.cpp" />
     <ClCompile Include="StrictlyDominated.cpp" />
     <ClCompile Include="UserInteraction.cpp" />
+    <ClCompile Include="WeaklyDominated.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MaxMin.h" />
     <ClInclude Include="Output.h" />
     <ClInclude Include="StrictlyDominated.h" />
     <ClInclude Include="UserInteraction.h" />
+    <ClInclude Include="WeaklyDominated.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
