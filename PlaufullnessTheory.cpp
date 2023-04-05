@@ -10,18 +10,45 @@
 using namespace std;
 
 
-//void Alltests()
-//{
-//	vector<vector<float>> myvect0 = { {0, 1}, {1, 0} };
-//	vector<vector<float>> myvect1 = { {0, 1}, {1, 0} };
-//	assert(StrictlyDominated1(myvect0) == myvect1);
-//
-//	myvect0 = { {0, 1, 2}, {2, 5, 4} };
-//	myvect1 = { {2, 5, 4}, {} };
-//	assert(StrictlyDominated1(myvect0) == myvect1);
-//
-//	cout << "Тесты прошли успешно, всё заебись!";
-//}
+void Alltests()
+{
+	// Строгая доминация для 1 чела
+	vector<vector<float>> myvect0 = { {0, 1}, {1, 0} };
+	vector<vector<float>> myvect1 = { {0, 1}, {1, 0} };
+	assert(StrictlyDominated1(myvect0) == myvect1);
+
+	myvect0 = { {0, 1, 2}, {2, 5, 4} };
+	myvect1 = { {2, 5, 4} };
+	assert(StrictlyDominated1(myvect0) == myvect1);
+
+	myvect0 = { {0, 1, 2}, {2, 5, 4}, {6, 7, 8} };
+	myvect1 = { {6, 7, 8} };
+	assert(StrictlyDominated1(myvect0) == myvect1);
+
+	myvect0 = { {2, 9, 10}, {0, 1, 2}, {2, 5, 4}, {6, 7, 8} };
+	myvect1 = { {2, 9, 10}, {6, 7, 8} };
+	assert(StrictlyDominated1(myvect0) == myvect1);
+
+	myvect0 = { {} };
+	myvect1 = { {} };
+	assert(StrictlyDominated1(myvect0) == myvect1);
+
+	myvect0 = { {2, 9, 10}, {2, 9, 11} };
+	myvect1 = { {2, 9, 10}, {2, 9, 11} };
+	assert(StrictlyDominated1(myvect0) == myvect1);
+
+	myvect0 = { {1, 2, 3}, {2, 9, 10}, {2, 9, 11}, {0, 0, 1} };
+	myvect1 = { {2, 9, 10}, {2, 9, 11} };
+	assert(StrictlyDominated1(myvect0) == myvect1);
+
+	//myvect0 = { {0, 1, 2},
+	//			{2, 5, 4} };
+
+	//myvect1 = { {0, -1, -2} };
+	//assert(StrictlyDominated2(myvect0) == myvect1);
+
+	cout << "Тесты прошли успешно, всё заебись!";
+}
 
 int main()
 {
