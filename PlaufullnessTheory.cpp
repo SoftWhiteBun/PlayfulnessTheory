@@ -111,7 +111,7 @@ int main()
 			pair<int, int> minmax = MinMax(Mgame);
 			cout << endl;
 			cout << "Максимин:" << endl;
-			cout << "Индекс: [ " << (maxmin.first + 1) << " , " << (maxmin.second + 1) << " ]" << endl;
+			cout << "Индекс: [ " << (maxmin.first+1) << " , " << (maxmin.second+1) << " ]" << endl;
 			cout << "Значение: " << Mgame[maxmin.first][maxmin.second] << endl << endl;
 
 			cout << "Минимакс:" << endl;

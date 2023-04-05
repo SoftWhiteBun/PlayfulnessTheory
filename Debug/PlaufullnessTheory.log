@@ -1,9 +1,22 @@
-﻿  NBA.cpp
-C:\Users\Liza\Desktop\учеба\весенний сем\теория игр\проект\PlaufullnessTheory\NBA.cpp(101,21): warning C4018: <: несоответствие типов со знаком и без знака
-  PlaufullnessTheory.cpp
-  UserInteraction.cpp
-C:\Users\Liza\Desktop\учеба\весенний сем\теория игр\проект\PlaufullnessTheory\UserInteraction.cpp(47,16): warning C4244: инициализация: преобразование "int" в "float", возможна потеря данных
-  WeaklyDominated.cpp
-C:\Users\Liza\Desktop\учеба\весенний сем\теория игр\проект\PlaufullnessTheory\WeaklyDominated.cpp(118,21): warning C4018: <: несоответствие типов со знаком и без знака
-  Создание кода...
+﻿  MaxMin.cpp
+C:\Users\Liza\Desktop\учеба\весенний сем\теория игр\проект\PlaufullnessTheory\MaxMin.cpp(15,24): warning C4244: =: преобразование "_Ty" в "int", возможна потеря данных
+          with
+          [
+              _Ty=float
+          ]
+C:\Users\Liza\Desktop\учеба\весенний сем\теория игр\проект\PlaufullnessTheory\MaxMin.cpp(19,32): warning C4244: =: преобразование "_Ty" в "int", возможна потеря данных
+          with
+          [
+              _Ty=float
+          ]
+C:\Users\Liza\Desktop\учеба\весенний сем\теория игр\проект\PlaufullnessTheory\MaxMin.cpp(42,24): warning C4244: =: преобразование "_Ty" в "int", возможна потеря данных
+          with
+          [
+              _Ty=float
+          ]
+C:\Users\Liza\Desktop\учеба\весенний сем\теория игр\проект\PlaufullnessTheory\MaxMin.cpp(46,32): warning C4244: =: преобразование "_Ty" в "int", возможна потеря данных
+          with
+          [
+              _Ty=float
+          ]
   PlaufullnessTheory.vcxproj -> C:\Users\Liza\Desktop\учеба\весенний сем\теория игр\проект\PlaufullnessTheory\Debug\PlaufullnessTheory.exe
