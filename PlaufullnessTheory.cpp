@@ -13,9 +13,9 @@ using namespace std;
 
 void Alltests()
 {
-	// Строгая доминация для 1 чела
+	// Строгая доминация для 1 игрока
 	vector<vector<float>> myvect0 = { {0, 1}, {1, 0} };
-	vector<vector<float>> myvect1 = { {0, 1}, {1, 0} };
+	vector<vector<float>> myvect1 = { };
 	assert(StrictlyDominated1(myvect0) == myvect1);
 
 	myvect0 = { {0, 1, 2}, {2, 5, 4} };
@@ -31,16 +31,59 @@ void Alltests()
 	assert(StrictlyDominated1(myvect0) == myvect1);
 
 	myvect0 = { {} };
-	myvect1 = { {} };
+	myvect1 = { };
 	assert(StrictlyDominated1(myvect0) == myvect1);
+	  
+	// Строгая доминация для 2 игрока
 
-	myvect0 = { {2, 9, 10}, {2, 9, 11} };
-	myvect1 = { {2, 9, 10}, {2, 9, 11} };
-	assert(StrictlyDominated1(myvect0) == myvect1);
+	myvect0 = { {5, 2, 3}, 
+				{124, 9, 10}, 
+				{22, 9, 11}, 
+				{5, 0, 1} };
+	myvect1 = { {-2},
+				{-9},
+				{-9},
+				{-0} };
+	assert(StrictlyDominated2(myvect0) == myvect1);
 
+	myvect0 = { {5, 4, 3},
+				{124, 24, 10},
+				{22, 15, 11},
+				{5, 5, 5} };
+	myvect1 = {  };
+	assert(StrictlyDominated2(myvect0) == myvect1);
+
+	// Нежная доминация для 1
 	myvect0 = { {1, 2, 3}, {2, 9, 10}, {2, 9, 11}, {0, 0, 1} };
-	myvect1 = { {2, 9, 10}, {2, 9, 11} };
-	assert(StrictlyDominated1(myvect0) == myvect1);
+	myvect1 = { {2, 9, 11} };
+	assert(WeaklyDominated1(myvect0) == myvect1);
+
+	myvect0 = { {1} };
+	myvect1 = { };
+	assert(WeaklyDominated1(myvect0) == myvect1);
+
+	// Нежная доминация для 2
+
+	myvect0 = { {5, 3, 3},
+				{124, 9, 10},
+				{22, 9, 11},
+				{5, 0, 1} };
+	myvect1 = { {-3},
+				{-9},
+				{-9},
+				{-0} };
+	assert(WeaklyDominated2(myvect0) == myvect1);
+
+	myvect0 = { {5, 4, 3},
+				{124, 24, 10},
+				{22, 15, 11},
+				{5, 5, 5} };
+	myvect1 = { {-3},
+				{-10},
+				{-11},
+				{-5} };
+	assert(WeaklyDominated2(myvect0) == myvect1);
+
 
 	//myvect0 = { {0, 1, 2},
 	//			{2, 5, 4} };
@@ -60,7 +103,7 @@ int main()
 	Bgame.clear(); Mgame.clear();
 	bool ExitApp = false;
 
-//	Alltests();
+	Alltests();
 
 	//while (!MatrixType(flgBimatrix));
 	while (!ExitApp) {
@@ -71,11 +114,11 @@ int main()
 		cout << "Для выбора действия введите: " << endl;
 		cout << "c - ввод матрицы через консоль" << endl;
 		cout << "f - ввод матрицы через файл" << endl;
-		cout << "g - сгенерировать ланные" << endl;
+		cout << "g - сгенерировать данные" << endl;
 		cout << "m - получить максимин и минимакс" << endl;
 		cout << "d - удалить строго доминируемые стратегии" << endl;
 		cout << "w - удалить слабо доминируемые стратегии" << endl;
-		cout << "n - удалить слабо доминируемые стратегии" << endl;
+		cout << "n - Удаление НЛО стратегий" << endl;
 		cout << "cc - вывод матрицы в консоль" << endl;
 		cout << "ff - вывод матрицы в файл" << endl;
 		// другие действия с матричной моделью

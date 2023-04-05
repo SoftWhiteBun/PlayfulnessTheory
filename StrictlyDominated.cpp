@@ -113,11 +113,11 @@ vector<vector<float>> StrictlyDominated2(vector<vector<float>>& game) {
 			}
 		}
 	}
-	for (int i = 0; i < n; i++) {
-		for (int j = 0; j < dop[n - 1].size(); j++) {
-			dop[i][j] = -1 * dop[i][j];
-		}
-	}
+	//for (int i = 0; i < n; i++) {
+	//	for (int j = 0; j < dop[n - 1].size(); j++) {
+	//		dop[i][j] = -1 * dop[i][j];
+	//	}
+	//}
 
 	if (dop[n - 1].size() == game[n - 1].size()) {
 		cout << "—трого доминируемых стратегий не обнаружено" << endl;
