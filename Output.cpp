@@ -47,11 +47,14 @@ bool FOutput(vector<vector<float>>& game) {
 
 bool OutDomin(vector<vector<float>>& game, vector<vector<float>>(*Domin)(vector<vector<float>>&)) {
 	vector<vector<float>> Dominated = Domin(game);
-
+	if (Dominated.size() == 0) return true;
 	cout << "Для вывода результата в консоль введите - c; в файл введите - f: ";
 	string out;
 	cin >> out;
-	if (out == "c") COutput(Dominated);
+	if (out == "c") {
+		cout << "Полученнная матрица:" << endl;
+		COutput(Dominated);
+	}
 	else if (out == "f") FOutput(Dominated);
 	else {
 		cout << "Введен неверный формат вывода" << endl;

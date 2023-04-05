@@ -1,6 +1,6 @@
-#include "StrictlyDominated.h"
+#include "NBA.h"
 
-vector<vector<float>>StrictlyDominated1(vector<vector<float>>& game) {
+vector<vector<float>>NBA1(vector<vector<float>>& game) {
 	vector<vector<float>> dop = game;
 	vector<int> index;
 	int n = game.size();
@@ -13,7 +13,7 @@ vector<vector<float>>StrictlyDominated1(vector<vector<float>>& game) {
 		for (int i = k + 1; i < n; i++) {
 			chet1 = 0;
 			chet2 = 0;
-			for (int j = 0; j < m; j++)	 {
+			for (int j = 0; j < m; j++) {
 
 				if (game[k][j] < game[i][j]) {
 					chet1++;
@@ -22,45 +22,33 @@ vector<vector<float>>StrictlyDominated1(vector<vector<float>>& game) {
 					chet2++;
 				}
 			}
-			if (chet1 == m) {
+			if (chet1 != 0 and chet2 !=0) {
 				if (!count(index.begin(), index.end(), k))
 					index.push_back(k);	//добавл€ем индексы тех строк, которые надо удалить
 			}
-			if (chet2 == m) {
-				if (!count(index.begin(), index.end(), i))
-					index.push_back(i);
-			}
+
 		}
 
 	}
 
 	int sizeIndex = index.size();
-	if (sizeIndex > 0) {						
+	if (sizeIndex > 0) {
 		sort(index.begin(), index.end());
-		for (int i = sizeIndex-1; i >= 0; i--) {   
+		for (int i = sizeIndex - 1; i >= 0; i--) {
 			iter = dop.cbegin() + index[i];
-			dop.erase(iter);		
-		}
-	}
-
-	/*if (index.size() > 0) {
-		sort(index.begin(), index.end());
-		for (int i = 0; i < index.size(); ++i) {
-			iter = dop.cbegin() + index[i] - i;
 			dop.erase(iter);
 		}
-	} */
-
+	}
 
 	if (dop.size() == game.size()) {
-		cout << "—трого доминируемых стратегий не обнаружено" << endl;
+		cout << "ЌЋќ стратегий не обнаружено" << endl;
 		dop.clear();
 	}
-		
+
 	return dop;
 }
 
-vector<vector<float>> StrictlyDominated2(vector<vector<float>>& game) {
+vector<vector<float>> NBA2(vector<vector<float>>& game) {
 	vector<vector<float>> dop = game;
 	vector<int> index;
 	int n = game.size();
@@ -90,13 +78,9 @@ vector<vector<float>> StrictlyDominated2(vector<vector<float>>& game) {
 					chet2++;
 				}
 			}
-			if (chet1 == n) {
+			if (chet1 != 0 and chet2 != 0) {
 				if (!count(index.begin(), index.end(), k))
 					index.push_back(k);	//добавл€ем индексы тех строк, которые надо удалить
-			}
-			if (chet2 == n) {
-				if (!count(index.begin(), index.end(), i))
-					index.push_back(i);
 			}
 		}
 

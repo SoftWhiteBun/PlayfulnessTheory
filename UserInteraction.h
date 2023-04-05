@@ -8,8 +8,9 @@ using namespace std;
 enum HelpFlg {
 	HMaxMin = 0,
 	HSDomin,
-	HWDomin
+	HWDomin,
 	//HNLO
+	HFInput
 };
 
 bool CInput(bool& flgBimatrix, vector<vector<float>>& game);

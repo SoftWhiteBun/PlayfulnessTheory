@@ -6,6 +6,7 @@
 #include "MaxMin.h"
 #include "StrictlyDominated.h"
 #include "WeaklyDominated.h"
+#include "NBA.h"
 
 using namespace std;
 
@@ -73,6 +74,7 @@ int main()
 		cout << "m - получить максимин и минимакс" << endl;
 		cout << "d - удалить строго доминируемые стратегии" << endl;
 		cout << "w - удалить слабо доминируемые стратегии" << endl;
+		cout << "n - удалить слабо доминируемые стратегии" << endl;
 		cout << "cc - вывод матрицы в консоль" << endl;
 		cout << "ff - вывод матрицы в файл" << endl;
 		// другие действия с матричной моделью
@@ -88,6 +90,7 @@ int main()
 		}
 		if (UInp == "f") {
 			flgInteract = false;
+			Help(HFInput);
 			FInput(flgBimatrix, Mgame);
 			continue;
 		}
@@ -100,12 +103,16 @@ int main()
 			pair<int, int> minmax = MinMax(Mgame);
 			cout << endl;
 			cout << "Максимин:" << endl;
-			cout << "Индекс: [ " << maxmin.first << " , " << maxmin.second << " ]" << endl;
+			cout << "Индекс: [ " << (maxmin.first + 1) << " , " << (maxmin.second + 1) << " ]" << endl;
 			cout << "Значение: " << Mgame[maxmin.first][maxmin.second] << endl << endl;
 
 			cout << "Минимакс:" << endl;
-			cout << "Индекс: [ " << minmax.first << " , " << minmax.second << " ]" << endl;
+			cout << "Индекс: [ " << (minmax.first + 1) << " , " << (minmax.second + 1) << " ]" << endl;
 			cout << "Значение: " << Mgame[minmax.first][minmax.second] << endl << endl;
+			cout << "Введите i - для вывода информации об алгоритме; любой другой символ - для возврата в меню: ";
+			string input;
+			cin >> input;
+			if (input == "i") Help(HMaxMin);
 		}
 
 		if (UInp == "d") {
@@ -118,7 +125,14 @@ int main()
 			cin >> player;
 			if (player == "1") OutDomin(Mgame, StrictlyDominated1);
 			else if (player == "2") OutDomin(Mgame, StrictlyDominated2);
-			else  cout << "Введен некорректный номер игрока" << endl;
+			else {
+				cout << "Введен некорректный номер игрока" << endl;
+				continue;
+			}
+			cout << "Введите i - для вывода информации об алгоритме; любой другой символ - для возврата в меню: ";
+			string input;
+			cin >> input;
+			if (input == "i") Help(HSDomin);
 		}
 
 		if (UInp == "w") {
@@ -129,11 +143,38 @@ int main()
 			cout << "Введите 1 - для выбора первого игрока; 2 - для второго: ";
 			string player;
 			cin >> player;
-			if (player == "1") OutDomin(Mgame, StrictlyDominated1); // Weak
-			else if (player == "2") OutDomin(Mgame, StrictlyDominated2); // Weak
-			else  cout << "Введен некорректный номер игрока" << endl;
+			if (player == "1") OutDomin(Mgame, WeaklyDominated1); // Weak
+			else if (player == "2") OutDomin(Mgame, WeaklyDominated2); // Weak
+			else {
+				cout << "Введен некорректный номер игрока" << endl;
+				continue;
+			}
+			cout << "Введите i - для вывода информации об алгоритме; любой другой символ - для возврата в меню: ";
+			string input;
+			cin >> input;
+			if (input == "i") Help(HWDomin);
 		}
-		//ВЫШЕ ПОМЕНЯТЬ НА WEAKLY ФУНКЦИИ
+
+		if (UInp == "n") {
+			if (Mgame.size() == 0) {
+				cout << "Матрица не введена" << endl;
+				continue;
+			}
+			cout << "Введите 1 - для выбора первого игрока; 2 - для второго: ";
+			string player;
+			cin >> player;
+			if (player == "1") OutDomin(Mgame, NBA1);
+			else if (player == "2") OutDomin(Mgame, NBA2);
+			else {
+				cout << "Введен некорректный номер игрока" << endl;
+				continue;
+			}
+			cout << "Введите i - для вывода информации об алгоритме; любой другой символ - для возврата в меню: ";
+			string input;
+			cin >> input;
+			if (input == "i") Help(HSDomin);
+		}
+
 
 		if (UInp == "cc") {
 			COutput(Mgame);
@@ -147,6 +188,7 @@ int main()
 			Help(HSDomin);
 			Help(HWDomin);
 			//Help(HNLO);
+			Help(HFInput);
 		}
 
 		if (UInp == "e") {
