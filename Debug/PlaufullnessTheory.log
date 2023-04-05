@@ -1,2 +1,9 @@
-﻿  Output.cpp
+﻿  NBA.cpp
+C:\Users\Liza\Desktop\учеба\весенний сем\теория игр\проект\PlaufullnessTheory\NBA.cpp(101,21): warning C4018: <: несоответствие типов со знаком и без знака
+  PlaufullnessTheory.cpp
+  UserInteraction.cpp
+C:\Users\Liza\Desktop\учеба\весенний сем\теория игр\проект\PlaufullnessTheory\UserInteraction.cpp(47,16): warning C4244: инициализация: преобразование "int" в "float", возможна потеря данных
+  WeaklyDominated.cpp
+C:\Users\Liza\Desktop\учеба\весенний сем\теория игр\проект\PlaufullnessTheory\WeaklyDominated.cpp(118,21): warning C4018: <: несоответствие типов со знаком и без знака
+  Создание кода...
   PlaufullnessTheory.vcxproj -> C:\Users\Liza\Desktop\учеба\весенний сем\теория игр\проект\PlaufullnessTheory\Debug\PlaufullnessTheory.exe

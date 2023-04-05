@@ -21,6 +21,45 @@ bool CInput(bool& flgBimatrix, vector<vector<float>>& game) {
 	return true;
 }
 
+bool GInput(bool& flgBimatrix, vector<vector<float>>& game) {
+	game.clear();
+	int n = 0; //строки
+	int m = 0; //столбцы
+	string str1, str2;
+
+	cout << "Введите размер матрицы (формат ввода: строки столбцы): ";
+	cin >> str1 >> str2;
+	try {
+		n = std::stoi(str1);
+		m = std::stoi(str2);
+	}
+	catch (std::invalid_argument e) {
+		cout << "Неверный формат - введен строковый символ или строка" << endl;
+	}
+	if (!CheckFormat(n, m)) return false;
+
+	int i = 0;
+	while ( i < n) {
+			vector<float> jvec;
+			int j = 0;
+			while ( j < m) {
+				
+				float elem = rand();
+				jvec.push_back(elem);
+				++j;
+			}
+			game.push_back(jvec);
+			++i;
+	}
+
+	if (game.size() != n || game[n - 1].size() != m) {
+	cout << "Введены неверные размеры матрицы" << endl;
+	return false;
+	}
+	return true;
+}
+
+
 bool FInput(bool& flgBimatrix, vector<vector<float>>& game) {
 	string fileName;
 	int n = 0;

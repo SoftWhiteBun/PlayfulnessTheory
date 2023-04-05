@@ -71,6 +71,7 @@ int main()
 		cout << "Для выбора действия введите: " << endl;
 		cout << "c - ввод матрицы через консоль" << endl;
 		cout << "f - ввод матрицы через файл" << endl;
+		cout << "g - сгенерировать ланные" << endl;
 		cout << "m - получить максимин и минимакс" << endl;
 		cout << "d - удалить строго доминируемые стратегии" << endl;
 		cout << "w - удалить слабо доминируемые стратегии" << endl;
@@ -84,7 +85,7 @@ int main()
 
 		cin >> UInp;
 		if (UInp == "c") {
-			flgInteract = true;;
+			flgInteract = true;
 			CInput(flgBimatrix, Mgame);
 			continue;
 		}
@@ -94,6 +95,13 @@ int main()
 			FInput(flgBimatrix, Mgame);
 			continue;
 		}
+
+		if (UInp == "g") {
+			flgInteract = true;;
+			GInput(flgBimatrix, Mgame);
+			continue;
+		}
+
 		if (UInp == "m") {
 			if (Mgame.size() == 0) {
 				cout << "Матрица не введена" << endl;
