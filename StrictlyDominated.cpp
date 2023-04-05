@@ -3,7 +3,6 @@
 vector<vector<float>>StrictlyDominated1(vector<vector<float>>& game) {
 	vector<vector<float>> dop = game;
 	vector<int> index;
-	//vector<int> indexI;
 	int n = game.size();
 	int m = game[n - 1].size();
 	auto iter = dop.cbegin();
@@ -34,34 +33,36 @@ vector<vector<float>>StrictlyDominated1(vector<vector<float>>& game) {
 		}
 
 	}
-	//int sizeIndex = index.size();
-	//if (sizeIndex > 0) {						
-	//	sort(index.begin(), index.end());
-	//	for (int i = sizeIndex-1; i >= 0; i--) {   //вот тут надо придумать как удалять элементы с индексами, которые хрянятся в векторе index
-	//		advance(iter, index[i]);	//меняю позицию итератора, но как-то через пизду
-	//		dop.erase(iter);		//тут крашится
-	//	}
-	//}
 
-	if (index.size() > 0) {
+	int sizeIndex = index.size();
+	if (sizeIndex > 0) {						
+		sort(index.begin(), index.end());
+		for (int i = sizeIndex-1; i >= 0; i--) {   
+			iter = dop.cbegin() + index[i];
+			dop.erase(iter);		//тут крашится
+		}
+	}
+
+	/*if (index.size() > 0) {
 		sort(index.begin(), index.end());
 		for (int i = 0; i < index.size(); ++i) {
 			iter = dop.cbegin() + index[i] - i;
 			dop.erase(iter);
 		}
-	}
+	} */
 
 
 	if (dop.size() == game.size())
-		cout << "Строго доминируемых строк не обнаружено";
+		cout << "Строго доминируемых стратегий не обнаружено"<<endl;
 	return dop;
 }
 
 vector<vector<float>> StrictlyDominated2(vector<vector<float>>& game) {
 	vector<vector<float>> dop = game;
+	vector<int> index;
 	int n = game.size();
 	int m = game[n - 1].size();
-	auto iter = dop.cbegin();
+	auto iter = dop[0].cbegin();
 	int chet1, chet2;
 
 
@@ -72,33 +73,51 @@ vector<vector<float>> StrictlyDominated2(vector<vector<float>>& game) {
 	}
 
 
-	for (int k = 0; k < n - 1; k++) {
+	for (int k = 0; k < m - 1; k++) {
 
-		for (int i = k + 1; i < n; i++) {
+		for (int i = k + 1; i < m; i++) {
 			chet1 = 0;
 			chet2 = 0;
-			for (int j = 0; j < m; j++) {
-				if (dop[k][j] < dop[i][j])
-					chet1++;
-				if (dop[k][j] > dop[i][j])
-					chet2++;
+			for (int j = 0; j < n; j++) {
 
-			}
-			if (chet1 == m) {
-				for (int l = 0; l < m; l++) {
-					advance(iter, k);
-					dop.erase(iter);
+				if (dop[j][k] < dop[j][i]) {
+					chet1++;
 				}
-				
-				int n = dop.size();
+				if (dop[j][k] > dop[j][i]) {
+					chet2++;
+				}
 			}
-			if (chet2 == m) {
-				advance(iter, i);
-				dop.erase(iter);
-				int n = dop.size();
+			if (chet1 == n) {
+				if (!count(index.begin(), index.end(), k))
+					index.push_back(k);	//добавляем индексы тех строк, которые надо удалить
+			}
+			if (chet2 == n) {
+				if (!count(index.begin(), index.end(), i))
+					index.push_back(i);
+			}
+		}
+
+	}
+
+	int sizeIndex = index.size();
+	if (sizeIndex > 0) {
+		sort(index.begin(), index.end());
+		for (int i = sizeIndex - 1; i >= 0; i--) {
+			for (int j = 0; j < n; j++) {
+				iter = dop[j].cbegin() + index[i];
+				//dop.erase(iter);		//тут крашится
+				dop[j].erase(iter);
 			}
 		}
 	}
+	for (int i = 0; i < n; i++) {
+		for (int j = 0; j < dop[n - 1].size(); j++) {
+			dop[i][j] = -1 * dop[i][j];
+		}
+	}
+
+	if (dop[n - 1].size() == game[n - 1].size())
+		cout << "Строго доминируемых стратегий не обнаружено" << endl;
 	return dop;
 }
 
