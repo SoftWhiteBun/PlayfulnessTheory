@@ -13,8 +13,8 @@ pair<int, int> MaxMin(vector<vector<float>>& game) {
     for (int i = 0; i < n; i++)
     {
         min = game[i][0];
-        for (int j = 0; j < m; j++)      {
-           // if (j == 1) indexJ = 0;
+        for (int j = 0; j < m; j++) {
+            // if (j == 1) indexJ = 0;
             if (game[i][j] < min) {
                 min = game[i][j];
                 tmp = j;
