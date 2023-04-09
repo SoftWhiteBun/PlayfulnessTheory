@@ -1,12 +1,13 @@
 ﻿#include "cassert"
 #include <iostream>
 #include <locale.h>
+#include <conio.h>
+
 #include "Output.h"
 #include "UserInteraction.h"
 #include "MaxMin.h"
 #include "StrictlyDominated.h"
 #include "WeaklyDominated.h"
-#include "NBA.h"
 
 using namespace std;
 
@@ -91,7 +92,7 @@ void Alltests()
 	//myvect1 = { {0, -1, -2} };
 	//assert(StrictlyDominated2(myvect0) == myvect1);
 
-	cout << "Тесты прошли успешно, всё заебись!";
+	cout << "Тесты прошли успешно, всё круто!";
 }
 
 int main()
@@ -103,9 +104,8 @@ int main()
 	Bgame.clear(); Mgame.clear();
 	bool ExitApp = false;
 
-	Alltests();
+	//Alltests();
 
-	//while (!MatrixType(flgBimatrix));
 	while (!ExitApp) {
 
 		string UInp;
@@ -118,9 +118,8 @@ int main()
 		cout << "m - получить максимин и минимакс" << endl;
 		cout << "d - удалить строго доминируемые стратегии" << endl;
 		cout << "w - удалить слабо доминируемые стратегии" << endl;
-		cout << "n - Удаление НЛО стратегий" << endl;
-		cout << "cc - вывод матрицы в консоль" << endl;
-		cout << "ff - вывод матрицы в файл" << endl;
+		cout << "r - вывод матрицы в консоль" << endl;
+		cout << "o - вывод матрицы в файл" << endl;
 		// другие действия с матричной моделью
 		cout << "h - помощь" << endl;
 		cout << "е - выход" << endl;
@@ -194,8 +193,8 @@ int main()
 			cout << "Введите 1 - для выбора первого игрока; 2 - для второго: ";
 			string player;
 			cin >> player;
-			if (player == "1") OutDomin(Mgame, WeaklyDominated1); // Weak
-			else if (player == "2") OutDomin(Mgame, WeaklyDominated2); // Weak
+			if (player == "1") OutDomin(Mgame, WeaklyDominated1); 
+			else if (player == "2") OutDomin(Mgame, WeaklyDominated2);
 			else {
 				cout << "Введен некорректный номер игрока" << endl;
 				continue;
@@ -206,31 +205,11 @@ int main()
 			if (input == "i") Help(HWDomin);
 		}
 
-		if (UInp == "n") {
-			if (Mgame.size() == 0) {
-				cout << "Матрица не введена" << endl;
-				continue;
-			}
-			cout << "Введите 1 - для выбора первого игрока; 2 - для второго: ";
-			string player;
-			cin >> player;
-			if (player == "1") OutDomin(Mgame, NBA1);
-			else if (player == "2") OutDomin(Mgame, NBA2);
-			else {
-				cout << "Введен некорректный номер игрока" << endl;
-				continue;
-			}
-			cout << "Введите i - для вывода информации об алгоритме; любой другой символ - для возврата в меню: ";
-			string input;
-			cin >> input;
-			if (input == "i") Help(HSDomin);
-		}
 
-
-		if (UInp == "cc") {
+		if (UInp == "r") {
 			COutput(Mgame);
 		}
-		if (UInp == "ff") {
+		if (UInp == "o") {
 			FOutput(Mgame);
 		}
 
@@ -238,8 +217,11 @@ int main()
 			Help(HMaxMin);
 			Help(HSDomin);
 			Help(HWDomin);
-			//Help(HNLO);
 			Help(HFInput);
+			cout << endl;
+			cout << "Для возврата в меню нажмите Enter..." << endl;
+			getchar();
+			getchar();
 		}
 
 		if (UInp == "e") {

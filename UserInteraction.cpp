@@ -13,6 +13,7 @@ bool CInput(bool& flgBimatrix, vector<vector<float>>& game) {
 	}
 	catch (std::invalid_argument e) {
 		cout << "Неверный формат - введен строковый символ или строка" << endl;
+		return false;
 	}
 	if (!CheckFormat(n, m)) return false;
 
@@ -25,6 +26,8 @@ bool GInput(bool& flgBimatrix, vector<vector<float>>& game) {
 	game.clear();
 	int n = 0; //строки
 	int m = 0; //столбцы
+	float min, max;
+	bool flgInt;
 	string str1, str2;
 
 	cout << "Введите размер матрицы (формат ввода: строки столбцы): ";
@@ -35,26 +38,43 @@ bool GInput(bool& flgBimatrix, vector<vector<float>>& game) {
 	}
 	catch (std::invalid_argument e) {
 		cout << "Неверный формат - введен строковый символ или строка" << endl;
+		return false;
 	}
 	if (!CheckFormat(n, m)) return false;
+
+	cout << "Введите границы генерации случайных значений (формат ввода: мин. макс.): ";
+	cin >> str1 >> str2;
+	try {
+		min = std::stof(str1);
+		max = std::stof(str2);
+	}
+	catch (std::invalid_argument e) {
+		cout << "Неверный формат - введен строковый символ или строка" << endl;
+		return false;
+	}
+
+	cout << "Введите i - для генерации целочисленных значений; f - с плавающей запятой: ";
+	cin >> str1;
+	if (str1 == "i") flgInt = true;
+	else if (str1 == "f") flgInt = false;
+	else {
+		cout << "Введен неверный формат значений" << endl;
+		return false;
+	}
 
 	int i = 0;
 	while ( i < n) {
 			vector<float> jvec;
 			int j = 0;
 			while ( j < m) {
-				
-				float elem = rand();
+				float elem;
+				if (flgInt) elem = min + (rand() % static_cast<int>(max - min + 1));
+				else elem = (double)rand() / (double)RAND_MAX * (max - min) + min;
 				jvec.push_back(elem);
 				++j;
 			}
 			game.push_back(jvec);
 			++i;
-	}
-
-	if (game.size() != n || game[n - 1].size() != m) {
-	cout << "Введены неверные размеры матрицы" << endl;
-	return false;
 	}
 	return true;
 }
@@ -83,6 +103,7 @@ bool FInput(bool& flgBimatrix, vector<vector<float>>& game) {
 		}
 		catch (std::invalid_argument e) {
 			cout << "Неверный формат - введен строковый символ или строка" << endl;
+			return false;
 		}
 		if (!CheckFormat(n, m)) return false;
 
@@ -131,46 +152,29 @@ bool CheckFormat(int n, int m) {
 
 //-----------------------------------------------------
 
-//bool MatrixType(bool& flgBimatrix) {
-//	string flg;
-//	cout << "Введите тип матрицы" << endl;
-//	cout << "b - биматрица" << endl;
-//	cout << "m - простая матрица" << endl;
-//	cout << "e - выход" << endl;
-//	cin >> flg;
-//	if (flg == "b") flgBimatrix = true;
-//	else if (flg == "m") flgBimatrix = false;
-//	else if (flg == "e") exit(0);
-//	else {
-//		cout << "Некорректный тип матрицы" << endl;
-//		return false;
-//	}
-//	return true;
-//}
-
 
 void Help(HelpFlg flg) {
 	switch (flg) {
+
 	case HMaxMin: 
 		cout << endl;
 		cout << "Максимин - это стратегия осторожности\n(находится минимальный выигрыш в каждой стратегии, из этих значений выбирается максимальное).\nИгрок максимизирует свой результат при наихудшем для него выборе соперника.\n\nПри этом для второго игрока стратегия следует признаку минимакса(находится максимальный выигрыш в каждой стратегии, из этих значений ищется минимальное)." << endl;
 		break;
+
 	case HSDomin:
 		cout << endl;
 		cout << "Строго доминируемой называется стратегия s', которая в любой подситуации будет проигрывать стратегии s\".\n В матричной игре для первого игрока она рассчитывается исходя из значений, представленных в матрице.\nДля второго игрока берется противоположное число для каждого элемента матрицы." << endl;
 		break;
+
 	case HWDomin:
 		cout << endl;
 		cout << "Слабо доминируемой называется стратегия s', которая в любой подситуации будет проигрывать или будет равна стратегии s\".\nВ матричной игре для первого игрока она рассчитывается исходя из значений, представленных в матрице.\nДля второго игрока берется противоположное число для каждого элемента матрицы.\nВНИМАНИЕ: При последовательном исключении слабо доминируемых стратегий, конечное множество\nстратегий зависит от порядка исключения.\nДля изменения порядка исключения введите строки/столбцы, соответствующие стратегиям, в другом порядке." << endl << endl;
 		break;
-	/*case HNLO:
-	    cout << endl;
-		cout << "НЛО называется стратегия никогда не лучшего ответа, т.е. это та стратегия s', которая ни при какой подситуации\nне будет являться наилучшим ответом. Рациональный игрок при выборе НЛО стратегии всегда будет жалеть,\n что не выбрал какую-либо другую из своих стратегий." << endl << endl;
-		break;*/
+
 	case HFInput:
 		cout << endl;
 		cout << "Формат ввода матрицы через файл:\n<Количество строк> <Количество столбцов>\n<Элементы матрицы> " << endl;
-		cout << "Пример:\n3 4\n1 2 3 4\n5 6 7 8\n9 10 11 12" << endl;
+		cout << "Пример:\n3 4\n1 2 3 4\n5 6 7 8\n9 7 4 8" << endl;
 		break;
 	}
 }

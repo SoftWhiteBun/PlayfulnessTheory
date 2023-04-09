@@ -109,7 +109,6 @@ vector<vector<float>> WeaklyDominated2(vector<vector<float>>& game) {
 		for (int i = sizeIndex - 1; i >= 0; i--) {
 			for (int j = 0; j < n; j++) {
 				iter = dop[j].cbegin() + index[i];
-				//dop.erase(iter);		//тут крашится
 				dop[j].erase(iter);
 			}
 		}

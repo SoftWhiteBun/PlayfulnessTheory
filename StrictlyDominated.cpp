@@ -17,16 +17,15 @@ vector<vector<float>>StrictlyDominated1(vector<vector<float>>& game) {
 
 				if (game[k][j] < game[i][j]) {
 					chet1++;
-				}
-				if (game[k][j] > game[i][j]) {
+				} else if (game[k][j] > game[i][j]) {
 					chet2++;
 				}
 			}
 			if (chet1 == m) {
 				if (!count(index.begin(), index.end(), k))
 					index.push_back(k);	//добавляем индексы тех строк, которые надо удалить
-			}
-			if (chet2 == m) {
+
+			} else if (chet2 == m) {
 				if (!count(index.begin(), index.end(), i))
 					index.push_back(i);
 			}
@@ -85,16 +84,15 @@ vector<vector<float>> StrictlyDominated2(vector<vector<float>>& game) {
 
 				if (dop[j][k] < dop[j][i]) {
 					chet1++;
-				}
-				if (dop[j][k] > dop[j][i]) {
+				} else if (dop[j][k] > dop[j][i]) {
 					chet2++;
 				}
 			}
 			if (chet1 == n) {
 				if (!count(index.begin(), index.end(), k))
 					index.push_back(k);	//добавляем индексы тех строк, которые надо удалить
-			}
-			if (chet2 == n) {
+
+			} else if (chet2 == n) {
 				if (!count(index.begin(), index.end(), i))
 					index.push_back(i);
 			}
@@ -108,7 +106,6 @@ vector<vector<float>> StrictlyDominated2(vector<vector<float>>& game) {
 		for (int i = sizeIndex - 1; i >= 0; i--) {
 			for (int j = 0; j < n; j++) {
 				iter = dop[j].cbegin() + index[i];
-				//dop.erase(iter);		//тут крашится
 				dop[j].erase(iter);
 			}
 		}

@@ -140,7 +140,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="MaxMin.cpp" />
-    <ClCompile Include="NBA.cpp" />
     <ClCompile Include="Output.cpp" />
     <ClCompile Include="PlaufullnessTheory.cpp" />
     <ClCompile Include="StrictlyDominated.cpp" />
@@ -149,7 +148,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MaxMin.h" />
-    <ClInclude Include="NBA.h" />
     <ClInclude Include="Output.h" />
     <ClInclude Include="StrictlyDominated.h" />
     <ClInclude Include="UserInteraction.h" />
